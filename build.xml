@@ -15,7 +15,7 @@
  
    <target name = "clean" description = "Clean output directories">
       <delete>
-         <fileset dir = "${web.dir}">
+         <fileset dir = "${web.dir}" erroronmissingdir="false">
             <include name = "**/*.class"/>
             <include name = "**/*.jar"/>
          </fileset>
