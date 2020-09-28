@@ -1,5 +1,5 @@
 <?xml version = "1.0"?>
-<project name = "fax" basedir = "." default = "build">
+<project name = "fax" basedir = "." default = "build-jar">
    <property name = "src.dir" value = "src"/>
    <property name = "web.dir" value = "war"/>
    <property name = "build.dir" value = "${web.dir}/WEB-INF/classes"/>
@@ -15,13 +15,14 @@
  
    <target name = "clean" description = "Clean output directories">
       <delete>
-         <fileset dir = "${build.dir}">
+         <fileset dir = "${web.dir}">
             <include name = "**/*.class"/>
+            <include name = "**/*.jar"/>
          </fileset>
       </delete>
    </target>
 
-  <target name = "build-jar">
+  <target name = "build-jar" depends="clean,build">
      <jar destfile = "${web.dir}/lib/util.jar"
 	basedir = "${build.dir}"
 	includes = "**">
